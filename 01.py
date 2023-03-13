@@ -192,7 +192,7 @@ soslar = {
     "Soğan": Sogan,
     "Misir": Misir
 }
-
+from datetime import datetime
 def main():
     # Menüyü ekrana yazdırma
     print("Menü:")
@@ -222,9 +222,12 @@ def main():
 
     # Sipariş bilgilerini Orders_Database.csv dosyasına yazdırma
     with open("Orders_Database.csv", "a") as dosya:
-        dosya.write(f"{pizza_secimi}, {isim}, {tc_kimlik}, {kredi_karti}, {sos_secimi}, {kredi_karti_sifre}\n")
+        now = datetime.now()
+        current_time = now.strftime("%Y-%m-%d %H:%M:%S")
+        dosya.write(f"{pizza_secimi}, {isim}, {tc_kimlik}, {kredi_karti}, {sos_secimi}, {kredi_karti_sifre}, {current_time}\n")
     
     print("Siparisiniz başariyla alindi.")
 
 if __name__ == "__main__":
     main()
+
